@@ -19,10 +19,9 @@ var Card = (function () {
     var container = $("<div></div>")
       .addClass("card")
       .click(function () {
-        var deck = $("#deck");
-        deck.removeClass();
+        $(".element").removeClass("selected");
         for (var i in _this.elements) {
-          deck.addClass("element" + _this.elements[i]);
+          $(".element" + _this.elements[i]).addClass("selected");
         }
       });
 
@@ -76,7 +75,6 @@ function generate(n) {
   // Clear any previous deck
   var deck = $("#deck");
   deck.empty();
-  deck.removeClass();
 
   var i, j, k;
 
