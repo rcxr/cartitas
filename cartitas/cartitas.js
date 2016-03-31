@@ -5,9 +5,8 @@ var initialSeed = 0;
 var emojis = ["🐶", "🐱", "🐭", "🐹", "🐰", "🐻", "🐼", "🐨", "🐯", "🐮", "🐷", "🐽", "🐸", "🐙", "🐵", "🙈", "🙉", "🙊", "🐒", "🐔", "🐧", "🐦", "🐤", "🐣", "🐥", "🐺", "🐗", "🐴", "🐝", "🐛", "🐌", "🐞", "🐜", "🕷", "🐍", "🐢", "🐠", "🐟", "🐡", "🐬", "🐳", "🐋", "🐊", "🐆", "🐅", "🐃", "🐂", "🐄", "🐪", "🐫", "🐘", "🐐", "🐏", "🐑", "🐎", "🐖", "🐀", "🐁", "🐓", "🕊", "🐕", "🐩", "🐈", "🐇", "🐿", "🐾", "🐉", "🐲", "🌵", "🎄", "🌲", "🌳", "🌴", "🌱", "🌿", "☘", "🍀", "🎍", "🎋", "🍃", "🍂", "🍁", "🌾", "🌺", "🌻", "🌹", "🌷", "🌼", "🌸", "💐", "🍄", "🌰", "🎃", "🐚", "🕸", "🌎", "🌍", "🌏", "🌕", "🌖", "🌗", "🌘", "🌑", "🌒", "🌓", "🌔", "🌚", "🌝", "🌛", "🌜", "🌞", "🌙", "⭐️", "🌟", "💫", "✨", "☄", "☀️", "🌤", "⛅️", "🌥", "🌦", "☁️", "🌧", "⛈", "🌩", "⚡️", "🔥", "💥", "❄️", "🌨", "🔥", "💥", "❄️", "🌨", "☃️", "⛄️", "🌬", "💨", "🌪", "🌫", "☂️", "☔️", "💧", "💦", "🌊"];
 
 var Card = (function () {
-  function Card(n) {
+  function Card() {
     this.elements = [];
-    this.n = n;
   };
 
   Card.prototype.push = function (element) {
@@ -15,11 +14,22 @@ var Card = (function () {
   };
 
   Card.prototype.toHtml = function () {
-    var container = $("<div></div>").addClass("card");
+    var _this = this;
 
-    for (var i = 0; i < this.n; ++i) {
+    var container = $("<div></div>")
+      .addClass("card")
+      .click(function () {
+        var deck = $("#deck");
+        deck.removeClass();
+        for (var i in _this.elements) {
+          deck.addClass("element" + _this.elements[i]);
+        }
+      });
+
+    for (var i in this.elements) {
       container.append($("<div></div>")
         .addClass("element")
+        .addClass("element" + this.elements[i])
         .text(emojis[this.elements[i]]));
     }
 
@@ -29,7 +39,7 @@ var Card = (function () {
   Card.prototype.validate = function (card) {
     var duplicates = 0;
     for (var i in card.elements) {
-      if ($.inArray(card.elements[i], this.elements)) {
+      if (-1 < this.elements.indexOf(card.elements[i])) {
         ++duplicates;
       }
     }
@@ -44,20 +54,36 @@ var Card = (function () {
   return Card;
 })();
 
+function isPrime(n) {
+  for (var i = 2; i < Math.sqrt(n); ++i) {
+    if (n % i == 0) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
 function generate(n) {
+  if (!isPrime(n - 1)) {
+    alert("Sólo números de la forma n = p + 1, donde p es primo están soportados :(");
+    return;
+  }
+
   // Randomize emojis
   emojis.sort(randomFunc);
 
   // Clear any previous deck
   var deck = $("#deck");
   deck.empty();
+  deck.removeClass();
 
   var i, j, k;
 
   // Create required cards
   var cards = [];
   for (i = 0; i < n * (n - 1) + 1; ++i) {
-    cards.push(new Card(n));
+    cards.push(new Card());
   }
 
   // Fill first n cards
@@ -85,7 +111,7 @@ function generate(n) {
   // Force brute to validate
   for (i = 0; i < cards.length; ++i) {
     for (j = i + 1; j < cards.length; ++j) {
-      if (cards[i].validate(cards[j])) {
+      if (!cards[i].validate(cards[j])) {
         alert("Validation failed :(");
       }
     }

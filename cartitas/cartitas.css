@@ -13,6 +13,66 @@
   width: 100px;
 }
 
+#deck.element0 .element0,
+#deck.element1 .element1,
+#deck.element2 .element2,
+#deck.element3 .element3,
+#deck.element4 .element4,
+#deck.element5 .element5,
+#deck.element6 .element6,
+#deck.element7 .element7,
+#deck.element8 .element8,
+#deck.element9 .element9,
+#deck.element10 .element10,
+#deck.element11 .element11,
+#deck.element12 .element12,
+#deck.element13 .element13,
+#deck.element14 .element14,
+#deck.element15 .element15,
+#deck.element16 .element16,
+#deck.element17 .element17,
+#deck.element18 .element18,
+#deck.element19 .element19,
+#deck.element20 .element20,
+#deck.element21 .element21,
+#deck.element22 .element22,
+#deck.element23 .element23,
+#deck.element24 .element24,
+#deck.element25 .element25,
+#deck.element26 .element26,
+#deck.element27 .element27,
+#deck.element28 .element28,
+#deck.element29 .element29,
+#deck.element30 .element30,
+#deck.element31 .element31,
+#deck.element32 .element32,
+#deck.element33 .element33,
+#deck.element34 .element34,
+#deck.element35 .element35,
+#deck.element36 .element36,
+#deck.element37 .element37,
+#deck.element38 .element38,
+#deck.element39 .element39,
+#deck.element40 .element40,
+#deck.element41 .element41,
+#deck.element42 .element42,
+#deck.element43 .element43,
+#deck.element44 .element44,
+#deck.element45 .element45,
+#deck.element46 .element46,
+#deck.element47 .element47,
+#deck.element48 .element48,
+#deck.element49 .element49,
+#deck.element50 .element50,
+#deck.element51 .element51,
+#deck.element52 .element52,
+#deck.element53 .element53,
+#deck.element54 .element54,
+#deck.element55 .element55,
+#deck.element56 .element56 {
+  background-color: #bbbbbb;
+}
+
 #menu span, #menu input {
   margin-left: 10px;
 }
@@ -37,6 +97,7 @@
   float: left;
   background: #dd77dd;
   margin: 5px;
+  cursor: pointer;
 }
 
 .element {
