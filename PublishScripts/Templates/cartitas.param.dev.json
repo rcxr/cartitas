@@ -1,0 +1,29 @@
+{
+  "siteName": {
+    "value": "cartitas"
+  },
+  "hostingPlanName": {
+    "value": "devServicePlan"
+  },
+  "siteLocation": {
+    "value": "West US"
+  },
+  "sku": {
+    "value": "Free"
+  },
+  "workerSize": {
+    "value": "0"
+  },
+  "siteMode": {
+    "value": "Limited"
+  },
+  "computeMode": {
+    "value": "0"
+  },
+  "subscriptionId": {
+    "value": "24e1499f-5b6e-4a8e-b524-ad0d2f1541df"
+  },
+  "resourceGroup": {
+    "value": "devGroup"
+  }
+}
