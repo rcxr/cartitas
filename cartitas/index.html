@@ -1,10 +1,16 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-  <script type="text/javascript" src="cartitas.js" ></script>
+  <link rel="stylesheet" type="text/css" href="cartitas.css">
+  <script src="http://code.jquery.com/jquery-2.2.2.min.js" integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI=" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="cartitas.js"></script>
   <title>Cartitas</title>
   <meta charset="utf-8" />
 </head>
 <body>
+  <span>¿Cuántos símbolos tiene cada carta?</span>
+  <input type="text" id="n" />
+  <input type="button" id="generate" value="Generar" />
+  <div id="deck"></div>
 </body>
 </html>

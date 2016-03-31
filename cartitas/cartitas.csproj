@@ -66,6 +66,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="cartitas.css" />
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\cartitas.pubxml" />
     <None Include="Web.Debug.config">
