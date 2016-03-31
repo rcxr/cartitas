@@ -1,4 +1,8 @@
-﻿var initialValue = 3;
+﻿function randomFunc() { return -0.5 + Math.random(); };
+
+var initialValue = 8;
+var initialSeed = 0;
+var emojis = ["🐶", "🐱", "🐭", "🐹", "🐰", "🐻", "🐼", "🐨", "🐯", "🐮", "🐷", "🐽", "🐸", "🐙", "🐵", "🙈", "🙉", "🙊", "🐒", "🐔", "🐧", "🐦", "🐤", "🐣", "🐥", "🐺", "🐗", "🐴", "🐝", "🐛", "🐌", "🐞", "🐜", "🕷", "🐍", "🐢", "🐠", "🐟", "🐡", "🐬", "🐳", "🐋", "🐊", "🐆", "🐅", "🐃", "🐂", "🐄", "🐪", "🐫", "🐘", "🐐", "🐏", "🐑", "🐎", "🐖", "🐀", "🐁", "🐓", "🕊", "🐕", "🐩", "🐈", "🐇", "🐿", "🐾", "🐉", "🐲", "🌵", "🎄", "🌲", "🌳", "🌴", "🌱", "🌿", "☘", "🍀", "🎍", "🎋", "🍃", "🍂", "🍁", "🌾", "🌺", "🌻", "🌹", "🌷", "🌼", "🌸", "💐", "🍄", "🌰", "🎃", "🐚", "🕸", "🌎", "🌍", "🌏", "🌕", "🌖", "🌗", "🌘", "🌑", "🌒", "🌓", "🌔", "🌚", "🌝", "🌛", "🌜", "🌞", "🌙", "⭐️", "🌟", "💫", "✨", "☄", "☀️", "🌤", "⛅️", "🌥", "🌦", "☁️", "🌧", "⛈", "🌩", "⚡️", "🔥", "💥", "❄️", "🌨", "🔥", "💥", "❄️", "🌨", "☃️", "⛄️", "🌬", "💨", "🌪", "🌫", "☂️", "☔️", "💧", "💦", "🌊"];
 
 var Card = (function () {
   function Card(n) {
@@ -14,24 +18,41 @@ var Card = (function () {
     var container = $("<div></div>").addClass("card");
 
     for (var i = 0; i < this.n; ++i) {
-      container.append($("<span></span>")
+      container.append($("<div></div>")
         .addClass("element")
-        .addClass("element" + i)
-        .text(this.elements[i]));
+        .text(emojis[this.elements[i]]));
     }
 
     return container;
+  }
+
+  Card.prototype.validate = function (card) {
+    var duplicates = 0;
+    for (var i in card.elements) {
+      if ($.inArray(card.elements[i], this.elements)) {
+        ++duplicates;
+      }
+    }
+
+    return duplicates == 1;
+  }
+
+  Card.prototype.randomize = function () {
+    this.elements.sort(randomFunc);
   }
 
   return Card;
 })();
 
 function generate(n) {
-  var deck = $("#deck");
-  var i, j, k;
+  // Randomize emojis
+  emojis.sort(randomFunc);
 
   // Clear any previous deck
+  var deck = $("#deck");
   deck.empty();
+
+  var i, j, k;
 
   // Create required cards
   var cards = [];
@@ -59,6 +80,21 @@ function generate(n) {
         card.push(k * (n - 1) + (i * k + j) % (n - 1));
       }
     }
+  }
+
+  // Force brute to validate
+  for (i = 0; i < cards.length; ++i) {
+    for (j = i + 1; j < cards.length; ++j) {
+      if (cards[i].validate(cards[j])) {
+        alert("Validation failed :(");
+      }
+    }
+  }
+
+  // Randomize!
+  cards.sort(randomFunc);
+  for (i in cards) {
+    cards[i].randomize();
   }
 
   // Append cards to the deck div

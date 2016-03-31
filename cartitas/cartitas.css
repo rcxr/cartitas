@@ -1,1 +1,51 @@
-﻿
+﻿body {
+  font-family: 'Helvetica Neue', sans-serif;
+  margin: 0;
+}
+
+#menu {
+  background-color: #dddddd;
+  height: 60px;
+  line-height: 60px;
+}
+
+#menu input {
+  width: 100px;
+}
+
+#menu span, #menu input {
+  margin-left: 10px;
+}
+
+.button {
+  -ms-border-radius: 10px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 10px;
+  background-color: #bb66ff;
+  color: #ffffff;
+}
+
+.button:hover {
+  background-color: #8833ee;
+}
+
+.card {
+  -ms-border-radius: 100px;
+  border-radius: 100px;
+  float: left;
+  background: #dd77dd;
+  margin: 5px;
+}
+
+.element {
+  -ms-border-radius: 100px;
+  border-radius: 100px;
+  margin: 10px;
+  padding: 10px;
+  width: 50px;
+  font-size: 50px;
+  line-height: 50px;
+  background-color: #ffffff;
+}
