@@ -53,14 +53,29 @@ var Card = (function () {
   return Card;
 })();
 
+// De: http://www.javascripter.net/faq/numberisprime.htm
 function isPrime(n) {
-  for (var i = 2; i < Math.sqrt(n); ++i) {
-    if (n % i == 0) {
-      return false;
-    }
+  if (isNaN(n) || !isFinite(n) || n%1 || n<2){
+    return false;
+  } 
+
+  if (n%2==0){
+    return (n==2);
   }
 
-  return true;
+  if (n%3==0){
+    return (n==3);
+  }
+
+  var m=Math.sqrt(n);
+  for (var i=5;i<=m;i+=6) {
+    if (n%i==0){
+      return false;
+    }
+
+    if (n%(i+2)==0){
+      return false;
+    }
 }
 
 function generate(n) {
