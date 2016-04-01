@@ -68,14 +68,15 @@ function isPrime(n) {
   }
 
   var m=Math.sqrt(n);
-  for (var i=5;i<=m;i+=6) {
-    if (n%i==0){
+  for (var i = 5; i <= m; i += 6) {
+    if (n % i == 0) {
       return false;
     }
 
-    if (n%(i+2)==0){
+    if (n % (i + 2) == 0) {
       return false;
     }
+  }
 }
 
 function generate(n) {
