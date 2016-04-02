@@ -54,3 +54,8 @@
   line-height: 50px;
   background-color: #ffffff;
 }
+
+.element img{
+  width: 50px;
+  height: 50px;
+}

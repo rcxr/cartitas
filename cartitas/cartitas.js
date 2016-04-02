@@ -143,6 +143,8 @@ function generate(n) {
   for (i in cards) {
     deck.append(cards[i].toHtml());
   }
+
+  twemoji.parse(document.body);
 }
 
 $(function () {
